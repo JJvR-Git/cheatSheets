@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Drawing 1</title>
+    </head>
+    
+    <body>
+        <header>
+            <button id="larger"> LARGER </button>
+        </header>
+    </body>
+    
+    <footer>
+        
+        <style>
+            body {
+                height: 2000px;
+                background-color: aliceblue;
+            }
+            
+            .dot {
+                height: 8px;
+                width: 8px;
+                border-radius: 4px;
+                background-color: brown;
+                position: absolute;
+            }
+            
+        </style>
+        
+        <script>          
+            window.addEventListener("mousemove", function(event){
+                var dot = document.createElement("div");
+                
+                dot.className = "dot";
+                
+                dot.style.left = (event.pageX - 4) + "px";
+                dot.style.top = (event.pageY - 4) + "px";
+                if((event.pageY -4) > 27){
+                    document.body.appendChild(dot);
+                }
+            })
+            
+            var bLarger = document.getElementById("larger");
+            bLarger.addEventListener("mouseover", function(event){
+                var dot = document.getElementsByClassName("dot");
+                
+                for(let i = 0; i < dot.length; i++){
+                    dot[i].style.height = "16px";
+                    dot[i].style.width = "16px";
+                    dot[i].style.borderRadius = "8px";
+                }
+            })
+            
+                bLarger.addEventListener("mouseout", function(event){
+                var dot = document.getElementsByClassName("dot");
+                
+                for(let i = 0; i < dot.length; i++){
+                    dot[i].style.height = "8px";
+                    dot[i].style.width = "8px";
+                    dot[i].style.borderRadius = "4px";
+                }
+            })
+            
+            window.addEventListener("keydown", event => {
+                if(event.key == 'v'){
+                    document.body.style.backgroundColor = "blue";
+                }
+            })
+            
+            window.addEventListener("keyup", event => {
+                if(event.key == 'v'){
+                    document.body.style.backgroundColor = "aliceblue";
+                }
+            })
+        </script>
+        
+    </footer>
+</html>

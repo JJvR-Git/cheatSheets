@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Template</title>
+    </head>
+    
+    <body>
+        <form id="form">
+            <input type="text" placeholder="text input">
+            <input type="password" placeholder="password">
+        </form>
+        
+    </body>
+    
+    <footer>
+        
+        <style>
+            body {
+                background-color: aliceblue;
+            }
+        </style>
+        <script>
+            var form = document.getElementById("form");
+            form.addEventListener("focus", function(event){
+                event.target.style.backgroundColor = "pink";
+            }, true)
+            
+            form.addEventListener("blur", function(event){
+                event.target.style.backgroundColor = "";
+            }, true)
+        </script>
+    </footer>
+</html>

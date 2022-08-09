@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Touch</title>
+    </head>
+    
+    <body>
+        
+    </body>
+    
+    <footer>
+        
+        <style>
+            body {
+                height: 2000px;
+                background-color: aliceblue;
+            }
+            
+            .dot {
+                height: 8px;
+                width: 8px;
+                border-radius: 4px;
+                background-color: brown;
+                position: absolute;
+            }
+            
+        </style>
+        
+        <script>          
+            window.addEventListener("touchmove", function(event){
+                
+                for(var i = 0; i < event.touches.length; i++){
+                    
+                    var fingers = event.touches[i];
+                    
+                    var dot = document.createElement("div");
+                    dot.className = "dot";
+                    dot.style.left = (fingers.pageX - 4) + "px";
+                    dot.style.top = (fingers.pageY - 4) + "px";
+                    document.body.appendChild(dot);
+                }
+                
+                event.preventDefault();
+            }, {passive: false})
+        </script>
+    </footer>
+</html>

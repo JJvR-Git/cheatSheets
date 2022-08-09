@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Progress</title>
+    </head>
+    
+    <body>
+        
+        <div id="progress"></div>                
+        
+    </body>
+    
+    <footer>
+        <style>
+            body {
+                height: 2000px;
+                background-color: salmon;
+            }
+            
+            #progress {
+                width: 0;
+                height: 20px;
+                background-color: green;
+                position: fixed;
+                top: 0; left: 0;
+            }
+            
+        </style>
+        
+        <script>
+
+            let bar = document.getElementById("progress");
+            window.addEventListener("scroll", function(){
+                bar.style.width = pageYOffset + "px";
+                console.log(pageYOffset);
+            })
+
+        </script>      
+    </footer>
+</html>
