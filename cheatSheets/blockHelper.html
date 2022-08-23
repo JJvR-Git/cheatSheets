@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Template</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.js"></script>
+    </head>
+    
+    <body>
+        <script id="template" type="template/handlebars">
+            {{#bookpublished books}}
+                {{name}} is {{val}}<br>
+            {{/bookpublished}}
+        </script>
+        
+        <span id="target"></span>
+        
+        
+    </body>
+    
+    <footer>
+        
+        <style>
+            body {
+                background-color: aliceblue;
+            }
+        </style>
+        <script>
+            var src = document.getElementById("template").innerHTML;
+            var template = Handlebars.compile(src);
+            
+            var context = {
+                "books": [{
+                    "name": "book1",
+                    "val": 2013
+                }, {
+                    "name": "book2",
+                    "val": 2016
+                }]
+            }
+            
+            Handlebars.registerHelper("bookpublished", function(data, options){
+                var len = data.length;
+                console.log("items: " + len);
+                var returnData = "";
+                
+                for(var i = 0; i < len; i++){
+                    data[i].val = (data[i].val < 2019) ? "published" : "not published";
+                    returnData = returnData + options.fn(data[i]);
+                    console.log("return data: " + returnData);
+                }
+                return returnData;
+            })
+            
+            
+            var rendered = template(context);
+            document.body.innerHTML += rendered;
+        </script>
+    </footer>
+</html>

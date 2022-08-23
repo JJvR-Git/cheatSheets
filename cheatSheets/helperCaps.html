@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Template</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.js"></script>
+    </head>
+    
+    <body>
+        <script id="template" type="template/handlebars">
+            <h1>{{caps "South London Bookclub" lower="no"}}</h>
+        </script>
+        
+        <span id="target"></span>
+        
+        
+    </body>
+    
+    <footer>
+        
+        <style>
+            body {
+                background-color: aliceblue;
+            }
+        </style>
+        <script>
+            var src = document.getElementById("template").innerHTML;
+            var template = Handlebars.compile(src);
+            Handlebars.registerHelper("caps", function(text, options){
+                if(!options.hash.lower || options.hash.lower === "no"){
+                    return text.toUpperCase();
+                }else{
+                    return text.toLowerCase();
+                }
+                
+            })
+            var rendered = template();
+            document.getElementById("target").innerHTML = rendered;
+        </script>
+    </footer>
+</html>

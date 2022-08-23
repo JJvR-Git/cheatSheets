@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Template</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.js"></script>
+    </head>
+    
+    <body>
+        <script id="besttemplate" type="template/handlebars">
+            <ol>
+            {{#each bestseller}}
+                <li>{{this}}</li>
+            {{/each}}
+            </ol>
+        </script>
+
+        <span id="besttarget"></span>
+        
+        
+    </body>
+    
+    <footer>
+        
+        <style>
+            body {
+                background-color: aliceblue;
+            }
+        </style>
+        <script>
+            var bestsrc = document.getElementById("besttemplate").innerHTML;
+            var besttemplate = Handlebars.compile(bestsrc);
+            var bestrendered = besttemplate({bestseller:["1", "2", "3"]});
+            document.getElementById("besttarget").innerHTML = bestrendered;
+        </script>
+    </footer>
+</html>

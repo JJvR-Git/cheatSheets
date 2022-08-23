@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Template</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.js"></script>
+    </head>
+    
+    <body>
+        <script id="template" type="template/handlebars">
+            <h1>Title</h1>
+            {{>greetings}}
+            
+            {{log "test log"}}
+        </script>
+    </body>
+    
+    <footer>
+        
+        <style>
+            body {
+                background-color: aliceblue;
+            }
+        </style>
+        <script>
+            var partialSrc = "Hello {{name}}";
+            
+            Handlebars.logger.log(0, partialSrc);// none
+            Handlebars.logger.log(1, partialSrc);// debug/ info
+            Handlebars.logger.log(2, partialSrc);// warning
+            Handlebars.logger.log(3, partialSrc);// error
+            
+            Handlebars.registerPartial("greetings", partialSrc);
+            
+            var templateSrc = document.getElementById("template").innerHTML;
+            
+            var template = Handlebars.compile(templateSrc);
+            
+            var data = {
+                name: "George"
+            }
+            
+            document.body.innerHTML += template(data);
+        </script>
+    </footer>
+</html>
